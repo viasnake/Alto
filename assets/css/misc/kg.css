@@ -3,6 +3,36 @@
     margin-left: auto;
 }
 
+.kg-embed-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.kg-toggle-card .kg-toggle-heading-text {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.has-serif-title .kg-toggle-heading-text {
+    font-family: var(--font-serif);
+}
+
+.kg-toggle-content > * + * {
+    margin: 2.4rem 0 0;
+}
+
+.kg-callout-card-accent a {
+    text-decoration: underline;
+}
+
+blockquote.kg-blockquote-alt {
+    font-style: normal;
+    line-height: 1.6;
+    color: var(--secondary-text-color);
+}
+
 .kg-canvas {
     display: grid;
     grid-template-columns:
