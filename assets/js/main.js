@@ -2,11 +2,7 @@ var html = $('html');
 
 $(function () {
     darkMode();
-    whiteLogo();
     carousel();
-    video();
-    author();
-    offCanvas();
 });
 
 function darkMode() {
@@ -19,13 +15,6 @@ function darkMode() {
             localStorage.setItem('alto_dark', true);
         }
     });
-}
-
-function whiteLogo() {
-    if (typeof gh_white_logo != 'undefined') {
-        var whiteImage = '<img class="logo-image white" src="' + gh_white_logo + '">';
-        $('.logo').append(whiteImage);
-    }
 }
 
 function carousel() {
@@ -46,11 +35,11 @@ function carousel() {
 
     carousel.owlCarousel({
         dots: false,
-        margin: 20,
+        margin: 28,
         nav: true,
         navText: [
-            '<i class="icon icon-chevron-left"></i>',
-            '<i class="icon icon-chevron-right"></i>',
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="22" height="22" fill="currentColor"><path d="M20.547 22.107l-6.107-6.107 6.107-6.12-1.88-1.88-8 8 8 8 1.88-1.893z"></path></svg>',
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="22" height="22" fill="currentColor"><path d="M11.453 22.107l6.107-6.107-6.107-6.12 1.88-1.88 8 8-8 8-1.88-1.893z"></path></svg>',
         ],
         onInitialized: function () {
             moveNav();
@@ -70,67 +59,4 @@ function carousel() {
             },
         },
     });
-}
-
-function video() {
-    'use strict';
-    $('.post-content').fitVids();
-}
-
-function author() {
-    $('.author-name').on('click', function () {
-        $(this).next('.author-social').toggleClass('enabled');
-    });
-}
-
-function offCanvas() {
-    var burger = jQuery('.burger');
-    var canvasClose = jQuery('.canvas-close');
-
-    jQuery('.nav-list').slicknav({
-        label: '',
-        prependTo: '.mobile-menu',
-    });
-
-    burger.on('click', function () {
-        html.toggleClass('canvas-opened');
-        html.addClass('canvas-visible');
-        dimmer('open', 'medium');
-    });
-
-    canvasClose.on('click', function () {
-        if (html.hasClass('canvas-opened')) {
-            html.removeClass('canvas-opened');
-            dimmer('close', 'medium');
-        }
-    });
-
-    jQuery('.dimmer').on('click', function () {
-        if (html.hasClass('canvas-opened')) {
-            html.removeClass('canvas-opened');
-            dimmer('close', 'medium');
-        }
-    });
-
-    jQuery(document).keyup(function (e) {
-        if (e.keyCode == 27 && html.hasClass('canvas-opened')) {
-            html.removeClass('canvas-opened');
-            dimmer('close', 'medium');
-        }
-    });
-}
-
-function dimmer(action, speed) {
-    'use strict';
-
-    var dimmer = jQuery('.dimmer');
-
-    switch (action) {
-        case 'open':
-            dimmer.fadeIn(speed);
-            break;
-        case 'close':
-            dimmer.fadeOut(speed);
-            break;
-    }
 }

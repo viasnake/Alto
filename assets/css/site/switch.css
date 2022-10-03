@@ -1,28 +1,30 @@
 .toggle-track {
     position: relative;
-    display: flex;
-    margin-left: 20px;
+    display: inline-flex;
     width: 45px;
     height: 24px;
+    cursor: pointer;
     user-select: none;
     background-color: var(--dark-gray-color);
     border-radius: 30px;
-    cursor: pointer;
 }
 
 .toggle-sun,
 .toggle-moon {
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin-top: 1px;
+    justify-content: center;
     width: 50%;
     color: var(--white-color);
-    font-size: 16px;
 }
 
 .toggle-moon {
     transform: translateX(1px);
+}
+
+.toggle-track svg {
+    width: 16px;
+    height: 16px;
 }
 
 .toggle-thumb {

@@ -1,19 +1,20 @@
-<nav class="pagination container large">
+<div class="gh-outer">
+<nav class="pagination">
+
     <div class="pagination-left">
         {{#if prev}}
-            <a class="newer-posts button-arrow button-arrow-left" href="{{page_url prev}}">
-                <i class="button-arrow-icon icon icon-arrow-left"></i> 新しい投稿
-            </a>
+            <a href="{{page_url prev}}">{{> "icons/arrow-left"}} 前へ</a>
         {{/if}}
     </div>
+
     {{#match pages "!=" 1}}
         <span class="page-number hidden-xs hidden-sm">{{page}} / {{pages}}</span>
     {{/match}}
+
     <div class="pagination-right">
         {{#if next}}
-            <a class="older-posts button-arrow button-arrow-right" href="{{page_url next}}">
-                古い投稿 <i class="button-arrow-icon icon icon-arrow-right"></i>
-            </a>
+            <a href="{{page_url next}}">次へ {{> "icons/arrow-right"}}</a>
         {{/if}}
     </div>
+
 </nav>
