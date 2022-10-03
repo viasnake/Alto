@@ -6,8 +6,8 @@ const livereload = require('gulp-livereload');
 const postcss = require('gulp-postcss');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
-const zip = require('gulp-zip');
 const beeper = require('beeper');
+const zip = require('gulp-zip');
 
 // postcss plugins
 const easyimport = require('postcss-easy-import');
@@ -30,7 +30,7 @@ function handleError(done) {
 
 function hbs(done) {
     pump([
-        src(['*.hbs', 'partials/**/*.hbs', 'members/**/*.hbs']),
+        src(['*.hbs', 'partials/**/*.hbs']),
         livereload()
     ], handleError(done));
 }
@@ -51,6 +51,8 @@ function css(done) {
 function js(done) {
     pump([
         src([
+            'node_modules/@tryghost/shared-theme-assets/assets/js/lib/**/*.js',
+            'node_modules/@tryghost/shared-theme-assets/assets/js/main.js',
             'assets/js/lib/*.js',
             'assets/js/main.js'
         ], {sourcemaps: true}),
@@ -76,7 +78,7 @@ function zipper(done) {
     ], handleError(done));
 }
 
-const hbsWatcher = () => watch(['*.hbs', 'partials/**/*.hbs', 'members/**/*.hbs'], hbs);
+const hbsWatcher = () => watch(['*.hbs', 'partials/**/*.hbs'], hbs);
 const cssWatcher = () => watch('assets/css/**/*.css', css);
 const jsWatcher = () => watch('assets/js/**/*.js', js);
 const watcher = parallel(hbsWatcher, cssWatcher, jsWatcher);
